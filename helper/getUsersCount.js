@@ -5,6 +5,7 @@
  */
 
 const http = require('http')
+const util = require('util')
 
 const USER_QUERY = '{users{id, firstname, lastname}}'
 const REQUEST_PARAMETER = {
@@ -42,10 +43,13 @@ const graphqlRequest = (body, callback) => {
   })
 }
 
-const getUsersCount = (callback) => {
-  graphqlRequest(USER_QUERY, (error, result) => {
-    callback(error, result.data.users.length)
-  })
+/**
+ * The promisify should be made a util to be resuable by other functions
+ */
+const getUsersCount = async () => {
+  const res = await util.promisify(graphqlRequest)(USER_QUERY)
+
+  return res.data.users.length
 }
 
 module.exports = getUsersCount

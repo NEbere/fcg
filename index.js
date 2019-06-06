@@ -9,10 +9,7 @@ const getUsersCount = require(path.resolve('helper', 'getUsersCount'))
 app.post('/graphql', graphqlHTTP({schema, graphiql: false}))
 app.get('/graphql', graphqlHTTP({schema, graphiql: true}))
 
-app.listen(port, () => {
+app.listen(port, async () => {
   console.log(`graphiql interface started on http://localhost:${port}/graphql`)
-
-  getUsersCount((error, count) => {
-    console.log('Total amount of users in Company', count)
-  })
+  console.log('Total amount of users in Company', await getUsersCount())
 })
