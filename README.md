@@ -5,7 +5,7 @@ Our current service is only able to return all our users.
 It should be possible
  - to get a single user based on the userid
  - rewrite the getUsersCount helper (helper/getUsersCount) to async / await (Promises)
- - we need to be able to return keys of an abritrary JSON for a given value, please write this helper helper/getKeys.js
+ - we need to be able to return keys of an arbitrary JSON for a given value, please write this helper helper/getKeys.js
  - having a new permission system, to add / remove permissions ('cardealer', 'carinspector') to a user
 
 Please add those feature to the current graphqlschema (schema directory)
